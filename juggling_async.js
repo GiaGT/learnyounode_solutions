@@ -16,18 +16,19 @@ var app = function()
 	var getData = function(urls)
 	{
 		var resp = initResponseArray(urls);
-		var cStatus = 0;
+		var cStatus = 0; var count = 0;
 
 		urls.forEach(function(url) { 
 			http.get(url, function(res) {
 				  res.setEncoding('utf8');
 				  
 				  res.on("data", function(data) { 
-				  	resp[url] += data;
+				  	resp[urls.indexOf(url)] += data;
 				  });
 
 				  res.on("end", function() {
-				  	cStatus++; if(cStatus > 2) printAll(resp);
+				  	cStatus++; 
+				  	if(cStatus > 2) printAll(resp); 
 				  })	  	
 		})
 		});
@@ -37,11 +38,9 @@ var app = function()
 	{
 		for (var i=0; i<3; i++)
 		{
-			console.log(resp);
+			console.log(resp[i]);
 		}
 	}
-
-
 
 	var init = function()
 	{
