@@ -30,7 +30,7 @@ var app = function()
 				  	cStatus++; 
 				  	if(cStatus > 2) printAll(resp); 
 				  })	  	
-		})
+			})
 		});
 	}
 
